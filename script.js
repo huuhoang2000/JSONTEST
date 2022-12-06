@@ -4,28 +4,33 @@ const inputid = document.getElementById("IDinput").value;
 const inputresource = document.getElementById("RESinput").value;
 const out1 = document.getElementById("output1");
 
-button.addEventListener("click", activatebutton);
+const getByID = (resource, id) => {
+      const requestUrl = 'https://jsonplaceholder.typicode.com/' + resource + '/' + id;
+      fetch(requestUrl)
+        .then((response) => response.json())
+        .then((json) => console.log(json));
+        console.log(response.json()) 
+  };
+
+  button.addEventListener("click", activatebutton);
+
+  const getAll = (resource) => {
+    const requestUrl = `https://jsonplaceholder.typicode.com/${resource}`;
+  
+    fetch(requestUrl)
+    .then(response => response.json())
+    .then(json => console.log(json))
+    console.log(response.json()) 
+  }
 
 function activatebutton() {
   let value = 0;
   if (inputid !== null && inputresource !== null ) {
-  const getByID = (inputresource, inputid) => {
-      const requestUrl = 'https://jsonplaceholder.typicode.com/' + inputresource + '/' + inputid;
-      fetch(requestUrl)
-        .then((response) => response.json())
-        .then((json) => console.log(json));
-  };
-    value = getByID;
+    getByID(inputresource, inputid );
+    // value = getByID();
   }
   else if (inputresource !== null && inputid === null) {
-    const getAll = (resource) => {
-      const requestUrl = `https://jsonplaceholder.typicode.com/${resource}`;
-    
-      fetch(requestUrl)
-      .then(response => response.json())
-      .then(json => console.log(json))
-    }
-    value = getAll;
+    getAll(inputresource);
   }
   out1.innerHTML = value;
 }
