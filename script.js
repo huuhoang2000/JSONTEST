@@ -7,9 +7,9 @@ const out1 = document.getElementById("output1");
 const getByID = (resource, id) => {
       const requestUrl = 'https://jsonplaceholder.typicode.com/' + resource + '/' + id;
       fetch(requestUrl)
-        .then((response) => response.json())
-        .then((json) => console.log(json));
-        console.log(response.json()) 
+        .then((response) => console.log(response.json()))
+        .then((json) => console.log(json))
+        // console.log(response.json()); 
   };
 
   button.addEventListener("click", activatebutton);
@@ -18,9 +18,9 @@ const getByID = (resource, id) => {
     const requestUrl = `https://jsonplaceholder.typicode.com/${resource}`;
   
     fetch(requestUrl)
-    .then(response => response.json())
+    .then(response => console.log(response.json()))
     .then(json => console.log(json))
-    console.log(response.json()) 
+    // console.log(response.json()) ;
   }
 
 function activatebutton() {
